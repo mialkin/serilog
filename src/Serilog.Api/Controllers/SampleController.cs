@@ -7,9 +7,9 @@ namespace Serilog.Api.Controllers;
 [Route("[controller]")]
 public class SampleController : ControllerBase
 {
-    [HttpGet("GetCurrentUtcDate")]
+    [HttpGet("get-current-utc-date")]
     public IActionResult GetCurrentUtcDate()
     {
-        return Ok(DateTime.UtcNow);
+        return Ok(DateTime.UtcNow.ToLocalTime());
     }
 }
