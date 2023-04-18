@@ -1,7 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration.ReadFrom.Configuration(context.Configuration);
+    configuration.WriteTo.Console();
+});
 
 var services = builder.Services;
 
@@ -12,6 +19,8 @@ services.AddSwaggerGen(options => { options.DescribeAllParametersInCamelCase(); 
 services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 app.UseSwagger();
 app.UseSwaggerUI(options =>
