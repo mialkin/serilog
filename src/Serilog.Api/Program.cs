@@ -8,6 +8,7 @@ builder.Host.UseSerilog((context, configuration) =>
 {
     configuration.ReadFrom.Configuration(context.Configuration);
     configuration.WriteTo.Console();
+    // configuration.WriteTo.File("/Users/john.doe/Downloads/serilog-api.log");
 });
 
 var services = builder.Services;
