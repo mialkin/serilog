@@ -2,6 +2,8 @@
 
 Showcase of [↑ Serilog](https://github.com/serilog/serilog) library.
 
+Run project:
+
 ```bash
-dotnet run --project=src/Serilog.Api
+dotnet watch --no-hot-reload --project=src/Serilog.Api
 ```
